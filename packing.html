@@ -29,15 +29,21 @@
 
 <p id="result">This text will be replaced </p>
 
-<!-- Create a function selectPack().
-a. It will reset the my_pack to an empty object.
-b. It will set the properties light, carry, and tablet for my_pack with true or false
-depending on whether each of the checkboxs is checked or not.
-c. Replace the innerHTML for the tagged element from step 6 with my_pack.-->
+<form>
+    <label for="month">Enter travel month</label>
+    <input type="text" id="month" value="May">
+    <br>
+
+    <label for="price">Enter price</label>
+    <input type="text" id="price">
+</form>
+
+<button onclick="updatePack()">Update the pack</button>
 
 <script>
     var my_pack = {}
     var result = document.getElementById("result")
+
     function selectPack() {
         my_pack = {}
 
@@ -46,7 +52,17 @@ c. Replace the innerHTML for the tagged element from step 6 with my_pack.-->
         my_pack.tablet = document.getElementById("item3").checked
 
         result.innerHTML = my_pack.light + " " + my_pack.carry + " " + my_pack.tablet
+    }
 
+    function updatePack() {
+        selectPack()
+        var month = document.getElementById("month").value
+        var price = document.getElementById("price").value
+
+        my_pack["month"] = month
+        my_pack["price"] = price
+
+        result.innerHTML = my_pack.light + " " + my_pack.carry + " " + my_pack.tablet + " " + my_pack.month + " " + my_pack.price
     }
 </script>
 </body>
