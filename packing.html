@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+    <title>Packing</title>
+</head>
+
+
+<body>
+
+<h2>Logan Lewis packs for a trip</h2>
+
+<form>
+    
+    <label for="item1">Pack Light</label>
+    <input type="checkbox" id="item1" value="true">
+    <br>
+
+    <label for="item2">Carry on</label>
+    <input type="checkbox" id="item2" value="true">
+    <br>
+
+    <label for="item3">Tablet</label>
+    <input type="checkbox" id="item3" value="false">
+    <br>    
+</form>
+
+<button onclick="selectPack()">Select for packing</button>
+
+<p id="result">This text will be replaced </p>
+
+<!-- Create a function selectPack().
+a. It will reset the my_pack to an empty object.
+b. It will set the properties light, carry, and tablet for my_pack with true or false
+depending on whether each of the checkboxs is checked or not.
+c. Replace the innerHTML for the tagged element from step 6 with my_pack.-->
+
+<script>
+    var my_pack = {}
+    var result = document.getElementById("result")
+    function selectPack() {
+        my_pack = {}
+
+        my_pack.light = document.getElementById("item1").checked
+        my_pack.carry = document.getElementById("item2").checked
+        my_pack.tablet = document.getElementById("item3").checked
+
+        result.innerHTML = my_pack.light + " " + my_pack.carry + " " + my_pack.tablet
+
+    }
+</script>
+</body>
+</html> 
