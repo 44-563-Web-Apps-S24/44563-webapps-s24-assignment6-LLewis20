@@ -3,24 +3,52 @@
  
 <head>
     <title>Animal game</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </head>
 
 <body>
 
     <h2>Animal game by Logan Lewis</h2>
 
-    <form>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h3>Scoreboard</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Correct</th>
+                            <th>Wrong</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="correct-score">0</td>
+                            <td id="wrong-score">0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+        
+        <form>
 
-        <label for="hidden-animal">The hidden animal type</label>
-        <input type="password" id='hidden-animal' placeholder="Chicken"> <br>
+            <div class="form-group">
+                <label for="hidden-animal">The hidden animal type</label>
+                <input type="password" class="form-control" id='hidden-animal' placeholder="Chicken"> 
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="guessed-animal">Guess the animal</label>
+                <input type="text" id="guessed-animal" class="form-control"> 
+            </div>
+            <br>
+            <button type="button" class="btn btn-primary" onclick="checkAnimal()">Check the Guess</button>
 
-        <label for="guessed-animal">Guess the animal</label>
-        <input type="text" id="guessed-animal"> <br>
-
-        <input type="button" onclick="checkAnimal()" value="Check the guess">
-
-    </form>
-    <p id="animal-result">This text will be replaced </p>
+        </form>
+        <p id="animal-result">This text will be replaced </p>
 
     <div class="container">
         <img src="images/longIslandIceTea.png" onclick="selectImage()" id="drink-image" alt="Long Island Ice Tea" height="150" width="150">
@@ -36,11 +64,16 @@
 
             if(hiddenInput.toLowerCase() == guessedInput.toLowerCase()){
                 correct++
+                document.getElementById("correct-score").innerHTML = correct
                 alert("RUFF RUFF")
             }
             else {
                 wrong++
+                document.getElementById("wrong-score").innerHTML = wrong
                 alert("GRRRR")
+            }
+            if (correct < wrong){
+                alert("Sorry, too many wrong guesses.")
             }
             document.getElementById("animal-result").innerHTML = "Correct: " + correct + " Wrong: " + wrong
         }
